@@ -4,7 +4,7 @@ class Task
   def initialize(attributes)
     @description = attributes.fetch("description")
     @due_date = attributes.fetch("due_date")
-    @list_id = attributes.fetch("list_id").to_i
+    @list_id = attributes.fetch("id").to_i
   end
 
   def self.all
