@@ -5,7 +5,7 @@
   <div class="col-4">
     <form class="to_do" action="/list" method="post">
       <div class="form-group">
-        <input class="form-control" placeholder="name of list" type="text" name="list">
+        <input class="form-control" placeholder="name of list" type="text" name="name">
       </div>
       <button type="submit" name="button">Create a list</button>
     </form>
@@ -16,16 +16,16 @@
 
 <div class="row">
 <% if @lists.any?() %>
-  <%  @list.each do |task| %>
-    <div class="col-4">
-      <h3><%= @list.name %></h3>
-      <ul>
+  <%  @lists.each do |list| %>
+  <div class="col-4">
+  <h3><%= @list.name %></h3>
+    <ul>
       <% if @tasks.any?() %>
         <%  @tasks.each do |task| %>
             <li> <%= task.name %>, Completed? <%= task.completed%> </li>
         <% end %>
       <% end %>
-      </ul>
+    </ul>
 
       <form class="to_do" action="/list/<%= @list.id %>" method="post">
         <div class="form-group">
@@ -37,7 +37,7 @@
         <button type="submit" name="button">Add to list</button>
       </form>
     </div>
-  <% end %>
+    <% end %>
 <% end %>
 
 </div>
