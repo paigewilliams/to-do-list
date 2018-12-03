@@ -1,6 +1,3 @@
-require("rspec")
-require("pg")
-require("list")
 require("spec_helper")
 
 describe (List) do
