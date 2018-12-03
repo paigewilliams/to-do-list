@@ -2,8 +2,13 @@ class List
 attr_reader(:name, :id)
 
   def initialize(attributes)
-    @name = attributes.fetch(:name)
-    @id = attributes.fetch(:id)
+    @name = attributes.fetch("name")
+    if attributes.keys.include?("id")
+      @id = attributes.fetch("id")
+    else
+      @id = nil
+    end
+
   end
 
   def self.all
@@ -12,7 +17,7 @@ attr_reader(:name, :id)
     returned_lists.each() do |list|
       name = list.fetch("name")
       id = list.fetch("id").to_i()
-      lists.push(List.new({:name => name, :id => id}))
+      lists.push(List.new({"name" => name, "id" => id}))
     end
     lists
   end
@@ -24,5 +29,5 @@ attr_reader(:name, :id)
 
   def ==(another_list)
     self.name().==(another_list.name()).&(self.id().==(another_list.id()))
-  end  
+  end
 end

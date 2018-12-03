@@ -15,11 +15,18 @@ get('/')do
   erb(:task)
 end
 
+get('/list')do
+  @lists = List.all
+  @tasks = Task.all
+  erb(:task)
+end
+
+
 post('/list')do
   new_list = List.new(params)
   new_list.save
   @lists = List.all
-  binding.pry
+  @tasks = Task.all
   erb(:task)
 end
 

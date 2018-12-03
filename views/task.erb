@@ -7,18 +7,20 @@
       <div class="form-group">
         <input class="form-control" placeholder="name of list" type="text" name="name">
       </div>
-      <button type="submit" name="button">Create a list</button>
+      <button class="btn btn-primary" type="submit" name="button">Create a list</button>
     </form>
   </div>
 
 </div>
-
+<br>
+<br>
+<br>
 
 <div class="row">
 <% if @lists.any?() %>
   <%  @lists.each do |list| %>
   <div class="col-4">
-  <h3><%= @list.name %></h3>
+  <h3><%= list.name %></h3>
     <ul>
       <% if @tasks.any?() %>
         <%  @tasks.each do |task| %>
@@ -27,16 +29,18 @@
       <% end %>
     </ul>
 
-      <form class="to_do" action="/list/<%= @list.id %>" method="post">
+      <form class="to_do" action="/list/<%= list.id %>" method="post">
         <div class="form-group">
           <input class="form-control" placeholder="name of task" type="text" name="task">
         </div>
         <div class="form-group">
           <input class="form-control" placeholder="Due Date" type="date" name="due_date">
         </div>
-        <button type="submit" name="button">Add to list</button>
+        <button class="btn btn-primary" type="submit" name="button">Add to list</button>
       </form>
     </div>
+    <br>
+    <br>
     <% end %>
 <% end %>
 
