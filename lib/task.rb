@@ -4,10 +4,22 @@ class Task
   def initialize(attributes)
     @description = attributes.fetch("description")
     @due_date = attributes.fetch("due_date")
-    @id = attributes.fetch("id").to_i
     @list_id = attributes.fetch("list_id").to_i
-    @completed = convert_completed(attributes.fetch("completed"))
+    if attributes.keys.include?("id")
+      @id = attributes.fetch("id").to_i
+    else
+      @id = nil
+    end
+
+    if attributes.keys.include?("completed")
+      @completed = convert_completed(attributes.fetch("completed"))
+    else
+      @completed = false
+    end
   end
+
+
+
 
   def self.all
     returned_tasks = DB.exec("SELECT * FROM tasks ORDER BY list_id DESC, due_date")

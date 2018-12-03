@@ -24,14 +24,14 @@
     <ul>
       <% if @tasks.any?() %>
         <%  @tasks.each do |task| %>
-            <li> <%= task.name %>, Completed? <%= task.completed%> </li>
+            <li> <%= task.description %>, Completed? <%= task.completed%> </li>
         <% end %>
       <% end %>
     </ul>
 
       <form class="to_do" action="/list/<%= list.id %>" method="post">
         <div class="form-group">
-          <input class="form-control" placeholder="name of task" type="text" name="task">
+          <input class="form-control" placeholder="name of task" type="text" name="description">
         </div>
         <div class="form-group">
           <input class="form-control" placeholder="Due Date" type="date" name="due_date">

@@ -30,8 +30,11 @@ post('/list')do
   erb(:task)
 end
 
-post('/list/:id') do
+post('/list/:list_id') do
+  new_task = Task.new(params)
+  new_task.save
   @lists = List.all
-  @tasks = Tasks.all
+  @tasks = Task.all
+
   erb(:task)
 end
