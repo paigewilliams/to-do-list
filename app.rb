@@ -38,3 +38,13 @@ post('/list/:list_id') do
 
   erb(:task)
 end
+
+get('/complete/:task_id') do
+  found_task = Task.find(params["task_id"])
+  new_task = Task.new(found_task)
+  binding.pry
+  new_task.set_completed(true)
+  @lists = List.all
+  @tasks = Task.all
+  erb(:task)
+end

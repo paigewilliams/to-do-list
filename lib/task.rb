@@ -18,9 +18,6 @@ class Task
     end
   end
 
-
-
-
   def self.all
     returned_tasks = DB.exec("SELECT * FROM tasks ORDER BY list_id DESC, due_date")
     tasks = []
@@ -28,6 +25,11 @@ class Task
       tasks.push(Task.new(task))
     end
     tasks
+  end
+
+  def self.find(id)
+    results = DB.exec("SELECT * FROM tasks WHERE id = #{id}")
+    results.first()
   end
 
   def save
